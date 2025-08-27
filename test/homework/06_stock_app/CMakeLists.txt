@@ -1,0 +1,3 @@
+add_executable(hw_06_stock_app_tests "stock_app_tests.cpp")
+target_link_libraries(hw_06_stock_app_tests hw_06_stock_library)
+add_test(NAME hw_06_stock_app_tests COMMAND hw_06_stock_app_tests -s)
