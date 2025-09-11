@@ -1,9 +1,2 @@
-﻿//example
-int add_numbers(int num1, int num2);
-
-//write function prototype here
-
-//multiply num1 and num2 and return the result
+﻿//function header for multiply_numbers
 int multiply_numbers(int num1, int num2);
-
-
