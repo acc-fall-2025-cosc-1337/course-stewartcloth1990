@@ -1,6 +1,7 @@
 ﻿//write include statements
 #include <iostream>
 #include "data_types.h"
+#include "data_types.cpp"
 
 //main function definition for multiply_numbers
 int main()
