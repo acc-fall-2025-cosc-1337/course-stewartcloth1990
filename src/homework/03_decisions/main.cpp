@@ -7,7 +7,7 @@ using namespace std;
 int main() 
 {
 	int grade;
-	std::cout << "Main Menu\n 1 - Letter grade using if\n 2- Letter grade using switch\n 3 - Exit\n";
+	std::cout << "Main Menu\n 1 - Letter grade using if\n 2 - Letter grade using switch\n 3 - Exit\n";
 	std::cin >> grade;
 
 	// IF STATEMENTS FOR 1st OPTION
