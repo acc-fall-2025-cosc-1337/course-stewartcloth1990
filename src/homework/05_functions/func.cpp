@@ -44,15 +44,25 @@ string get_dna_complement(string dna)
     {
         switch (*it)
         {
-            case 'A': complement += 'T'; break;
+            case 'A': 
+                complement += 'T';
+                break;
 
-            case 'T': complement += 'A'; break;
+            case 'T': 
+                complement += 'A'; 
+                break;
 
-            case 'C': complement += 'G'; break;
+            case 'C': 
+                complement += 'G'; 
+                break;
 
-            case 'G': complement += 'C'; break;
+            case 'G': 
+                complement += 'C'; 
+                break;
 
-            default: complement += *it; break;
+            default: 
+                complement += *it; 
+                break;
         }
     }
     return complement;
