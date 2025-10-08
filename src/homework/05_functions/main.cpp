@@ -19,15 +19,21 @@ int main()
 
 		if (choice == 1)
 		{
-			cout << "Please enter a DNA string: " << "\n";
+			cout << "Enter a DNA string: " << "\n";
 			cin >> dna;
 
-			cout << "The GC content of the string provided is " << dna << "\n";
+			double gc_content = get_gc_content(dna);
+
+			cout << fixed << setprecision(3);
+			cout << "The GC content of " << dna << " is " << gc_content << "\n";
 		}
 
 		else if (choice == 2)
 		{
+			cout << "Enter a DNA string: " << "\n";
+			cin >> dna;
 
+			
 		}
 
 		else (choice == 3);
