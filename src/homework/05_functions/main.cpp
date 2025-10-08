@@ -10,6 +10,7 @@ using std::cin;
 int main() 
 {
 	int choice;
+	string dna;
 
 	do
 	{
@@ -18,7 +19,10 @@ int main()
 
 		if (choice == 1)
 		{
-			
+			cout << "Please enter a DNA string: " << "\n";
+			cin >> dna;
+
+			cout << "The GC content of the string provided is " << dna << "\n";
 		}
 
 		else if (choice == 2)
