@@ -9,7 +9,7 @@ using std::cin;
 
 int main() 
 {
-	// Menu for user to select options
+	// Variable declarations
 	int choice;
 	string dna;
 
@@ -58,7 +58,7 @@ int main()
 		{
 			cout << "Invalid choice. Please select 1, 2, or 3." << "\n";
 		}
-		
+
 	// End of do-while loop
 	} while (choice != 3);
 
