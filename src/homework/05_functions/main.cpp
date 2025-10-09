@@ -22,13 +22,23 @@ int main()
 		// GC content option
 		if (choice == 1)
 		{
-			cout << "Enter a DNA string: " << "\n";
-			cin >> dna;
+			do
+			{
+				cout << "Enter a DNA string: " << "\n";
+				cin >> dna;
 
-			double gc_content = get_gc_content(dna);
+				if (!is_valid_dna(dna))
+				{
+					cout << "That's not a DNA string. Enter A, T, C, or G. \n";
+				}
+				
+				double gc_content = get_gc_content(dna);
 
-			cout << fixed << setprecision(3);
-			cout << "The GC content of " << dna << " is " << gc_content << "\n";
+				cout << fixed << setprecision(3);
+				cout << "The GC content of " << dna << " is " << gc_content << "\n";
+
+			} while (!is_valid_dna(dna));
+			
 		}
 
 		// DNA complement and reversal option
