@@ -9,26 +9,39 @@ using std::cin;
 
 int main() 
 {
-	// Variable declarations
+
 	int choice;
-	string dna;
 
 	// Loop until user chooses to exit
 	do
 	{
+		// intializing dna variable
+		string dna;
+
 		cout << "Menu" << "\n" << "1 - Get GC Content " << "\n" << "2 - Get DNA Complement " << "\n" << "3 - Exit" << "\n";
 		cin >> choice;
 
 		// GC content option
 		if (choice == 1)
 		{
-			cout << "Enter a DNA string: " << "\n";
-			cin >> dna;
+			do
+			{
+				cout << "Enter a DNA string: " << "\n";
+				cin >> dna;
+
+				// input validation loop 
+				if (!is_valid_dna(dna))
+				{
+					cout << "That's not a DNA string. Please enter only characters A, T, C, or G. \n";
+				}
+				
+			} while (!is_valid_dna(dna));
 
 			double gc_content = get_gc_content(dna);
 
 			cout << fixed << setprecision(3);
 			cout << "The GC content of " << dna << " is " << gc_content << "\n";
+			
 		}
 
 		// DNA complement and reversal option
@@ -37,8 +50,18 @@ int main()
 			string complement;
 			string complement_reverse;
 
-			cout << "Enter a DNA string: " << "\n";
-			cin >> dna;
+			do
+			{
+    			cout << "Enter a DNA string: " << "\n";
+    			cin >> dna;
+
+				// input validation loop
+    			if (!is_valid_dna(dna))
+				{
+        			cout << "Invalid DNA string. Please enter only characters A, T, C, or G.\n";
+    			}
+
+			} while (!is_valid_dna(dna));
 
 			complement = get_dna_complement(dna);
 			complement_reverse = get_reverse_string(dna);

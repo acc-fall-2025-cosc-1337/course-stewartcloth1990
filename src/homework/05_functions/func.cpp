@@ -67,3 +67,15 @@ string get_dna_complement(string dna)
     }
     return complement;
 }
+
+// Function to validate if a DNA string contains only valid nucleotides
+bool is_valid_dna(const string& dna)
+{
+    for (char c : dna)
+    {
+        if (c != 'A' && c != 'T' && c != 'C' && c != 'G'){
+            return false;
+        }
+    }
+    return !dna.empty();
+}
