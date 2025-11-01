@@ -2,7 +2,6 @@
 #include "catch.hpp"
 #include "tic_tac_toe.h"
 
-
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
@@ -22,7 +21,7 @@ TEST_CASE("Test is first player set correctly when starting the game")
 	REQUIRE(tic_tac_toe.get_player() == "X");
 }
 
-TEST_CASE("Test if board is full - game over")
+TEST_CASE("Test if board is full - game over ")
 {
 	TicTacToe tic_tac_toe;
 	tic_tac_toe.start_game("X");
@@ -30,38 +29,38 @@ TEST_CASE("Test if board is full - game over")
 
 	tic_tac_toe.mark_board(1);
 	REQUIRE(tic_tac_toe.get_player() == "O");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(2);
 	REQUIRE(tic_tac_toe.get_player() == "X");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(3);
 	REQUIRE(tic_tac_toe.get_player() == "O");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(6);
 	REQUIRE(tic_tac_toe.get_player() == "X");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(4);
 	REQUIRE(tic_tac_toe.get_player() == "O");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(7);
 	REQUIRE(tic_tac_toe.get_player() == "X");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(5);
 	REQUIRE(tic_tac_toe.get_player() == "O");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(9);
 	REQUIRE(tic_tac_toe.get_player() == "X");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(false  ==  tic_tac_toe.game_over());
 
 	tic_tac_toe.mark_board(8);
-	REQUIRE(tic_tac_toe.get_player() == "X");
-	REQUIRE(false == tic_tac_toe.game_over());
+	REQUIRE(tic_tac_toe.get_player() == "O");
+	REQUIRE(true  ==  tic_tac_toe.game_over());
 
 }
