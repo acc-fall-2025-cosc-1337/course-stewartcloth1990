@@ -5,7 +5,29 @@ using std::cout;
 
 bool TicTacToe::game_over()
 {
-    return check_board_full();
+    // concise, robust win detection using explicit winning triplets
+    const int wins[8][3] = {
+        {0,1,2}, {3,4,5}, {6,7,8}, // rows
+        {0,3,6}, {1,4,7}, {2,5,8}, // columns
+        {0,4,8}, {2,4,6}           // diagonals
+    };
+
+    for (const auto &w : wins) {
+        int a = w[0];
+        int b = w[1];
+        int c = w[2];
+        if (pegs[a] == pegs[b] && pegs[b] == pegs[c] && pegs[a] != " ") {
+            set_winner(pegs[a]);
+            return true;
+        }
+    }
+
+    if (check_board_full()) {
+        set_winner("C");
+        return true;
+    }
+
+    return false;
 }
 
 void TicTacToe::start_game(std::string first_player)
@@ -62,4 +84,10 @@ void TicTacToe::clear_board()
     {
         peg = " ";
     }
+}
+
+void TicTacToe::set_winner(std::string winner)
+{
+    // store the winner value ("X", "O", or "C" for cat's game / tie)
+    this->winner = winner;
 }
