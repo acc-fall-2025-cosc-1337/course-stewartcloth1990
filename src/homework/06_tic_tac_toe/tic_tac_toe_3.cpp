@@ -1,7 +1,9 @@
 #include "tic_tac_toe_3.h"
 #include <cmath>
 
-bool check_column_win() 
+TicTacToe3::TicTacToe3() : TicTacToe(3) {}
+
+bool TicTacToe3::check_column_win() 
 {
     int dimension = static_cast<int>(std::sqrt(pegs.size()));
     for (int col = 0; col < dimension; ++col) 
@@ -19,7 +21,7 @@ bool check_column_win()
 }
     
 
-bool check_row_win() 
+bool TicTacToe3::check_row_win() 
 {
     int dimension = static_cast<int>(std::sqrt(pegs.size()));
     for (int row = 0; row < dimension; ++row) 
@@ -36,7 +38,7 @@ bool check_row_win()
     return false;
 }
 
-bool check_diagonal_win() 
+bool TicTacToe3::check_diagonal_win() 
 {
     int dimension = static_cast<int>(std::sqrt(pegs.size()));
     // main diagonal

@@ -5,6 +5,9 @@
 
 class TicTacToe3 : public TicTacToe 
 {
+protected:
+    using TicTacToe::pegs;
+    
 public:
     TicTacToe3();
 
