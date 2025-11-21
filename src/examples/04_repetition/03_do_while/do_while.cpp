@@ -1,7 +1,8 @@
 #include "do_while.h"
 
-//Write code for void function prompt_user to loop until
-//user opts not to continue.  
+double divide_bill_amount(double amount) // dividing the bill amount due into 4 chunks to spread out over a month
+{
+    double total_to_pay = amount / 4;
 
-
-
+    return total_to_pay;
+}
