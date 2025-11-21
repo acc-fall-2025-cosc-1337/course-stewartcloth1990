@@ -91,3 +91,20 @@ void TicTacToe::set_winner(std::string winner)
     // store the winner value ("X", "O", or "C" for cat's game / tie)
     this->winner = winner;
 }
+
+// Provide default (base-class) definitions for the virtual win-check
+// methods so the vtable is emitted. Derived classes override these.
+bool TicTacToe::check_column_win()
+{
+    return false;
+}
+
+bool TicTacToe::check_row_win()
+{
+    return false;
+}
+
+bool TicTacToe::check_diagonal_win()
+{
+    return false;
+}
