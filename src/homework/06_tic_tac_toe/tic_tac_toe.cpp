@@ -1,25 +1,14 @@
 //cpp
 #include "tic_tac_toe.h"
+#include <cmath>
 
 using std::cout;
 
 bool TicTacToe::game_over()
 {
-    // concise, robust win detection using explicit winning triplets
-    const int wins[8][3] = {
-        {0,1,2}, {3,4,5}, {6,7,8}, // rows
-        {0,3,6}, {1,4,7}, {2,5,8}, // columns
-        {0,4,8}, {2,4,6}           // diagonals
-    };
-
-    for (const auto &w : wins) {
-        int a = w[0];
-        int b = w[1];
-        int c = w[2];
-        if (pegs[a] == pegs[b] && pegs[b] == pegs[c] && pegs[a] != " ") {
-            set_winner(pegs[a]);
-            return true;
-        }
+    // Use virtualized checks so derived board sizes (like 4x4) work correctly
+    if (check_row_win() || check_column_win() || check_diagonal_win()) {
+        return true;
     }
 
     if (check_board_full()) {
@@ -44,9 +33,13 @@ void TicTacToe::mark_board(int position)
 
 void TicTacToe::display_board() const
 {
-    for(long unsigned int i=0; i < pegs.size(); i+=3)
-    {
-        cout<<pegs[i]<<"|"<<pegs[i+1]<<"|"<<pegs[i+2]<<"\n";
+    int size = static_cast<int>(std::sqrt(pegs.size()));
+    for (int r = 0; r < size; ++r) {
+        for (int c = 0; c < size; ++c) {
+            if (c > 0) cout << "|";
+            cout << pegs[r * size + c];
+        }
+        cout << "\n";
     }
 }
 
@@ -96,15 +89,69 @@ void TicTacToe::set_winner(std::string winner)
 // methods so the vtable is emitted. Derived classes override these.
 bool TicTacToe::check_column_win()
 {
+    int n = static_cast<int>(std::sqrt(pegs.size()));
+    for (int c = 0; c < n; ++c) {
+        const std::string &first = pegs[c];
+        if (first == " " || first.empty()) continue;
+        bool win = true;
+        for (int r = 1; r < n; ++r) {
+            if (pegs[c + r * n] != first) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            winner = first;
+            return true;
+        }
+    }
     return false;
 }
 
 bool TicTacToe::check_row_win()
 {
+    int n = static_cast<int>(std::sqrt(pegs.size()));
+    for (int r = 0; r < n; ++r) {
+        int start = r * n;
+        const std::string &first = pegs[start];
+        if (first == " " || first.empty()) continue;
+        bool win = true;
+        for (int c = 1; c < n; ++c) {
+            if (pegs[start + c] != first) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            winner = first;
+            return true;
+        }
+    }
     return false;
 }
 
 bool TicTacToe::check_diagonal_win()
 {
+    int n = static_cast<int>(std::sqrt(pegs.size()));
+    // main diagonal
+    const std::string &d1 = pegs[0];
+    if (!(d1 == " " || d1.empty())) {
+        bool win = true;
+        for (int i = 1; i < n; ++i) {
+            if (pegs[i * n + i] != d1) { win = false; break; }
+        }
+        if (win) { winner = d1; return true; }
+    }
+
+    // anti-diagonal: start at n-1, step by (n-1)
+    const std::string &d2 = pegs[n - 1];
+    if (!(d2 == " " || d2.empty())) {
+        bool win = true;
+        for (int i = 1; i < n; ++i) {
+            if (pegs[(n - 1) + i * (n - 1)] != d2) { win = false; break; }
+        }
+        if (win) { winner = d2; return true; }
+    }
+
     return false;
 }
